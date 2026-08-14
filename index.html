@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TRADE WITH MUNAAF | Official Community</title>
+
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"></noscript>
+
+    <style>
+        *,
+        *::before,
+        *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box
+        }
+
+        body {
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px 16px;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            color: #eafff2;
+            background: #05100A;
+            overflow-x: hidden;
+        }
+
+        .wrapper {
+            width: 100%;
+            max-width: 420px;
+        }
+
+        .card {
+            background: #0A1F16;
+            border: 1px solid rgba(212, 175, 55, 0.18);
+            border-radius: 18px;
+            overflow: hidden;
+            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.6);
+        }
+
+        /* Scrolling-style ticker strip at top */
+
+        .ticker {
+            display: flex;
+            overflow: hidden;
+            background: #04140D;
+            border-bottom: 1px solid rgba(212, 175, 55, 0.15);
+            padding: 7px 0;
+            white-space: nowrap;
+        }
+
+        .ticker-track {
+            display: flex;
+            gap: 22px;
+            animation: scroll-left 18s linear infinite;
+            padding-left: 16px;
+        }
+
+        @keyframes scroll-left {
+            from {
+                transform: translateX(0);
+            }
+            to {
+                transform: translateX(-50%);
+            }
+        }
+
+        .ticker-item {
+            font-size: 10.5px;
+            font-weight: 700;
+            color: #9fd9bd;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .ticker-item.up {
+            color: #4ade80;
+        }
+
+        .ticker-item.down {
+            color: #f87171;
+        }
+
+        /* Terminal-style profile section */
+
+        .terminal-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 18px 20px 14px;
+            border-bottom: 1px solid rgba(212, 175, 55, 0.1);
+        }
+
+        .terminal-header img {
+            width: 54px;
+            height: 54px;
+            border-radius: 10px;
+            object-fit: cover;
+            border: 2px solid #D4AF37;
+            background: #0F3D2A;
+        }
+
+        .terminal-header h1 {
+            font-size: 17px;
+            font-weight: 800;
+            color: #ffffff;
+        }
+
+        .terminal-header .sub {
+            font-size: 11px;
+            color: #9fd9bd;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            margin-top: 2px;
+        }
+
+        .terminal-header .sub i {
+            color: #4ade80;
+            font-size: 9px;
+        }
+
+        /* Watchlist-style stats */
+
+        .watchlist {
+            padding: 14px 20px;
+        }
+
+        .watch-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 9px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+        }
+
+        .watch-row:last-child {
+            border-bottom: none;
+        }
+
+        .watch-row .label {
+            font-size: 12.5px;
+            color: #dff3e7;
+        }
+
+        .watch-row .value {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            font-size: 12.5px;
+            font-weight: 800;
+            color: #4ade80;
+        }
+
+        .watch-row .value i {
+            font-size: 10px;
+        }
+
+        /* Feature rows styled like market data cards */
+
+        .market-cards {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            padding: 4px 20px 18px;
+        }
+
+        .market-card {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            background: rgba(212, 175, 55, 0.05);
+            border-left: 3px solid #D4AF37;
+            border-radius: 0 10px 10px 0;
+            padding: 10px 14px;
+        }
+
+        .market-card i {
+            color: #D4AF37;
+            font-size: 15px;
+            width: 20px;
+            text-align: center;
+        }
+
+        .market-card span {
+            font-size: 12.5px;
+            color: #e3fff0;
+        }
+
+        .cta-wrap {
+            padding: 4px 20px 22px;
+        }
+
+        .cta-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            width: 100%;
+            padding: 16px;
+            border-radius: 10px;
+            background: linear-gradient(90deg, #0B6E4F 0%, #D4AF37 100%);
+            color: #06140c;
+            font-size: 15px;
+            font-weight: 800;
+            text-decoration: none;
+            letter-spacing: 0.3px;
+            box-shadow: 0 10px 24px rgba(212, 175, 55, 0.25);
+            transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+            cursor: pointer;
+        }
+
+        .cta-btn:active {
+            transform: scale(0.98);
+        }
+
+        .timer-text {
+            margin-top: 12px;
+            text-align: center;
+            font-size: 12px;
+            color: #4d7a63;
+        }
+
+        .timer-text span {
+            color: #D4AF37;
+            font-weight: 700;
+        }
+
+        .disclaimer {
+            margin-top: 18px;
+            font-size: 10.5px;
+            line-height: 1.6;
+            color: #3d5c4a;
+            text-align: center;
+            padding: 0 8px;
+        }
+
+        @media (max-width: 480px) {
+            .terminal-header h1 {
+                font-size: 15.5px;
+            }
+            .cta-btn {
+                font-size: 14px;
+                padding: 14px;
+            }
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <!-- Meta Pixel Code -->
+    <script>
+        ! function(f, b, e, v, n, t, s) {
+            if (f.fbq) return;
+            n = f.fbq = function() {
+                n.callMethod ?
+                    n.callMethod.apply(n, arguments) : n.queue.push(arguments)
+            };
+            if (!f._fbq) f._fbq = n;
+            n.push = n;
+            n.loaded = !0;
+            n.version = '2.0';
+            n.queue = [];
+            t = b.createElement(e);
+            t.async = !0;
+            t.src = v;
+            s = b.getElementsByTagName(e)[0];
+            s.parentNode.insertBefore(t, s)
+        }(window, document, 'script',
+            'https://connect.facebook.net/en_US/fbevents.js');
+        fbq('init', '2598431403977800');
+        fbq('track', 'PageView');
+    </script>
+    <noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=2598431403977800&ev=PageView&noscript=1"
+/></noscript>
+    <!-- End Meta Pixel Code -->
+
+    <div class="wrapper">
+        <div class="card">
+
+            <!-- Scrolling ticker strip -->
+            <div class="ticker">
+                <div class="ticker-track">
+                    <div class="ticker-item up"><i class="fas fa-arrow-up"></i> NIFTY 22,450</div>
+                    <div class="ticker-item down"><i class="fas fa-arrow-down"></i> SENSEX 73,980</div>
+                    <div class="ticker-item up"><i class="fas fa-arrow-up"></i> BANKNIFTY 47,120</div>
+                    <div class="ticker-item up"><i class="fas fa-arrow-up"></i> GOLD ₹71,200</div>
+                    <div class="ticker-item up"><i class="fas fa-arrow-up"></i> NIFTY 22,450</div>
+                    <div class="ticker-item down"><i class="fas fa-arrow-down"></i> SENSEX 73,980</div>
+                    <div class="ticker-item up"><i class="fas fa-arrow-up"></i> BANKNIFTY 47,120</div>
+                    <div class="ticker-item up"><i class="fas fa-arrow-up"></i> GOLD ₹71,200</div>
+                </div>
+            </div>
+
+            <!-- Terminal profile header -->
+            <div class="terminal-header">
+                <img src="munaf.jpg" alt="Profile Image" width="54" height="54">
+                <div>
+                    <h1>TRADE WITH MUNAAF</h1>
+                    <div class="sub"><i class="fas fa-circle"></i> Verified Trading Community</div>
+                </div>
+            </div>
+
+            <!-- Watchlist stats -->
+            <div class="watchlist">
+                <div class="watch-row">
+                    <span class="label">Beginner Friendly</span>
+                    <span class="value"><i class="fas fa-arrow-up"></i> 100%</span>
+                </div>
+                <div class="watch-row">
+                    <span class="label">Market Updates</span>
+                    <span class="value"><i class="fas fa-arrow-up"></i> Daily</span>
+                </div>
+                <div class="watch-row">
+                    <span class="label">Community Access</span>
+                    <span class="value"><i class="fas fa-arrow-up"></i> Free</span>
+                </div>
+            </div>
+
+            <!-- Market-card style features -->
+            <div class="market-cards">
+                <div class="market-card">
+                    <i class="fas fa-chart-line"></i>
+                    <span>Daily market updates &amp; trading insights</span>
+                </div>
+                <div class="market-card">
+                    <i class="fas fa-book-open"></i>
+                    <span>Free educational content, no hidden fees</span>
+                </div>
+                <div class="market-card">
+                    <i class="fas fa-bullseye"></i>
+                    <span>Easy explanations built for beginners</span>
+                </div>
+                <div class="market-card">
+                    <i class="fas fa-users"></i>
+                    <span>Full, active community support</span>
+                </div>
+            </div>
+
+            <div class="cta-wrap">
+                <a class="cta-btn" id="telegramBtn" href="https://t.me/+_M1KdkQu510wN2Y1" rel="noopener noreferrer">
+        <i class="fab fa-telegram-plane" style="font-size:18px;"></i> JOIN FREE COMMUNITY <i class="fas fa-arrow-right" style="font-size:12px;"></i>
+      </a>
+                <div class="timer-text">
+                    ⏳ Redirecting automatically in <span id="count">30</span>s...
+                </div>
+            </div>
+        </div>
+
+        <div class="disclaimer">
+            <strong>Disclaimer:</strong> This platform is for educational and informational purposes only. We do not provide any financial advice. Please do your own research before making any investment decisions.
+        </div>
+    </div>
+
+    <script>
+        (function() {
+            const telegramLink = "https://t.me/+_M1KdkQu510wN2Y1";
+            let time = 30;
+            const counter = document.getElementById("count");
+            const telegramBtn = document.getElementById("telegramBtn");
+
+            telegramBtn.addEventListener("click", function(e) {
+                e.preventDefault();
+                if (window.fbq) {
+                    fbq('track', 'Subscribe', {
+                        content_name: 'Telegram Community',
+                        button_click: true
+                    }, {
+                        eventID: 'telegram_subscribe_' + Date.now()
+                    });
+                }
+                setTimeout(() => {
+                    window.location.href = telegramLink;
+                }, 200);
+            });
+
+            const countdown = setInterval(() => {
+                time--;
+                counter.textContent = time;
+                if (time <= 0) {
+                    clearInterval(countdown);
+                    window.location.href = telegramLink;
+                }
+            }, 1000);
+        })();
+    </script>
+
+</body>
+
+</html>
